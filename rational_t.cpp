@@ -60,17 +60,18 @@ bool Rational_t::IsEqual(const Rational_t& r, const double precision) const {
 
 
 
-//bool
-//rational_t::is_greater(const rational_t& r, const double precision) const
-//{
-//}
+bool Rational_t::IsGreater(const Rational_t& r, const double precision) const {
+  return ((GetNumerador() / GetDenominador() - r.GetNumerador() / r.GetDenominador()) > EPSILON);
+}
 
 
 
-//bool
-//rational_t::is_less(const rational_t& r, const double precision) const
-//{
-//}
+bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
+  if ((r.GetNumerador() / r.GetDenominador() - GetNumerador() / GetDenominador()) > EPSILON) {
+    return ((GetNumerador() / GetDenominador() - r.GetNumerador() / r.GetDenominador()) < -EPSILON);
+  }
+  return false;
+}
 
 
 // operaciones

@@ -48,8 +48,8 @@ public:
 
   // FASE II
   bool IsEqual(const Rational_t&, const double precision = EPSILON) const;
-  // bool is_greater(const rational_t&, const double precision = EPSILON) const;
-  // bool is_less(const rational_t&, const double precision = EPSILON) const;
+  bool IsGreater(const Rational_t&, const double precision = EPSILON) const;
+  bool IsLess(const Rational_t&, const double precision = EPSILON) const;
   
   // FASE III
   // rational_t add(const rational_t&);

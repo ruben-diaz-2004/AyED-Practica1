@@ -38,12 +38,12 @@ int main()
   c.Write();
 
   // FASE II
-  // rational_t x(1, 3), y(2, 3);
-  // x.write();
-  // y.write();
-  // cout << "x == y? " << (x.is_equal(y) ? "true" : "false") << endl;
-  // cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl;
-  // cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl;
+  Rational_t x(1, 3), y(2, 3);
+  x.Write();
+  y.Write();
+  cout << "x == y? " << (x.IsEqual(y) ? "true" : "false") << endl;
+  cout << "x < y? " << (x.IsGreater(y) ? "true" : "false") << endl;
+  cout << "x > y? " << (x.IsLess(y) ? "true" : "false") << endl;
 
   // FASE III
   // cout << "a + b: ";
