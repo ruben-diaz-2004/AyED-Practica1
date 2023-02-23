@@ -47,16 +47,16 @@ int main()
 
   // FASE III
   cout << "a + b: ";
-  a.add(b).write();
+  a.add(b).Write();
   
   cout << "b - a: ";
-  b.substract(a).write();
+  b.substract(a).Write();
 
   cout << "a * b: ";
-  a.multiply(b).write();
+  a.multiply(b).Write();
   
   cout << "a / b: ";
-  a.divide(b).write();
+  a.divide(b).Write();
   
   return 0;
 }
