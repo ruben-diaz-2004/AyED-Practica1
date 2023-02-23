@@ -55,51 +55,51 @@ double Rational_t::Value() const {
  *  @return true si los racionales son iguales.
  */
 bool Rational_t::IsEqual(const Rational_t& r, const double precision) const { 
-  return (abs((GetNumerador() / GetDenominador() - r.GetNumerador() / r.GetDenominador())) < EPSILON);
+  return (abs((Value() - r.Value())) < EPSILON);
 }
 
 
 
 bool Rational_t::IsGreater(const Rational_t& r, const double precision) const {
-  return ((GetNumerador() / GetDenominador() - r.GetNumerador() / r.GetDenominador()) > EPSILON);
+  return ((Value() - r.Value()) > EPSILON);
 }
 
 
 
 bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
-  if ((r.GetNumerador() / r.GetDenominador() - GetNumerador() / GetDenominador()) > EPSILON) {
-    return ((GetNumerador() / GetDenominador() - r.GetNumerador() / r.GetDenominador()) < -EPSILON);
+  if ((r.Value() - Value()) > EPSILON) {
+    return ((Value() - r.Value()) < -EPSILON);
   }
   return false;
 }
 
 
 // operaciones
-//rational_t
-//rational_t::add(const rational_t& r)
-//{
-//}
+Rational_t Rational_t::add(const Rational_t& r) {
+  int numerador = GetNumerador() * r.GetDenominador() + r.GetNumerador() * GetDenominador();
+  int denominador = GetDenominador() * r.GetDenominador();
+  return Rational_t(numerador, denominador);
+}
 
 
 
-//rational_t
-//rational_t::substract(const rational_t& r)
-//{
-//}
+Rational_t Rational_t::substract(const Rational_t& r) {
+  int numerador = GetNumerador() * r.GetDenominador() - r.GetNumerador() * GetDenominador();
+  int denominador = GetDenominador() * r.GetDenominador();
+  return Rational_t(numerador, denominador);
+}
 
 
 
-//rational_t
-//rational_t::multiply(const rational_t& r)
-//{
-//}
+Rational_t Rational_t::multiply(const Rational_t& r) {
+ return Rational_t(GetNumerador() * r.GetNumerador(), GetDenominador() * r.GetDenominador());
+}
 
 
 
-//rational_t
-//rational_t::divide(const rational_t& r)
-//{
-//}
+Rational_t Rational_t::divide(const Rational_t& r) {
+  return Rational_t(GetNumerador() * r.GetDenominador(), GetDenominador() * r.GetNumerador());
+}
 
 
 

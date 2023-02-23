@@ -52,10 +52,10 @@ public:
   bool IsLess(const Rational_t&, const double precision = EPSILON) const;
   
   // FASE III
-  // rational_t add(const rational_t&);
-  // rational_t substract(const rational_t&);
-  // rational_t multiply(const rational_t&);
-  // rational_t divide(const rational_t&);
+  Rational_t add(const Rational_t&);
+  Rational_t substract(const Rational_t&);
+  Rational_t multiply(const Rational_t&);
+  Rational_t divide(const Rational_t&);
 
   // Método de escritura de la clase
   void Write(ostream& = cout) const;
