@@ -10,12 +10,10 @@
  *              https://geosoft.no/development/cppstyle.html
  * COMPILACIÓN: g++ -g rational_t.cpp main_rational_t.cpp -o main_rational_t
  */
-// pauta de estilo [92]: comentarios multilínea usando solo "//"
 
 #include <iostream>
 #include <cmath>
 
-// pauta de estilo [41]: ficheros de cabecera agrupados y separados
 #include "rational_t.hpp"
 
 using namespace std;

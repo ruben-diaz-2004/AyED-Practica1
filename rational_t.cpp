@@ -12,37 +12,51 @@
 #include "rational_t.hpp"
 #include <cmath>
 
-// Constructor con parámetros
+/**
+ * Constructor con parámetros
+ */ 
 Rational_t::Rational_t(const int n, const int d) {
   assert(d != 0);
   numerador_ = n, denominador_ = d;
 }
 
-// getter del numerador
+/**
+ * Getter del numerador
+ */ 
 int Rational_t::GetNumerador() const {
   return numerador_;
 }
 
-// getter del denominador
+/**
+ * getter del denominador
+*/
 int Rational_t::GetDenominador() const {
   return denominador_;
 }
 
 
-// setter del numerador
+/**
+ * setter del numerador
+*/
 void Rational_t::SetNumerador(const int n) {
   numerador_ = n;
 }
 
 
-// setter del denominador
+/**
+ * setter del denominador
+*/
 void Rational_t::SetDenominador(const int d) {
   assert(d != 0);
   denominador_ = d;
 }
 
 
-// Método que devuelve el valor en punto flotante del racional
+/**
+ * Método que devuelve el valor en punto flotante del racional
+ * @param
+ * @return valor en doble precisión del racional
+*/
 double Rational_t::Value() const { 
   return double(GetNumerador()) / GetDenominador();
 }
@@ -59,13 +73,23 @@ bool Rational_t::IsEqual(const Rational_t& r, const double precision) const {
 }
 
 
-
+/**
+ *  Método que comprueba si un racional es mayor que otro con error de epsilon
+ *  @param r, objeto a comparar
+ *  @param precision, se le pasa el valor de epsilon
+ *  @return true si el primer racional es mayor que el segundo.
+ */
 bool Rational_t::IsGreater(const Rational_t& r, const double precision) const {
   return ((Value() - r.Value()) > EPSILON);
 }
 
 
-
+/**
+ *  Método que comprueba si un racional es menor que otro con error de epsilon
+ *  @param r, objeto a comparar
+ *  @param precision, se le pasa el valor de epsilon
+ *  @return true si el primer racional es menor que el segundo.
+ */
 bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
   if ((r.Value() - Value()) > EPSILON) {
     return ((Value() - r.Value()) < -EPSILON);
@@ -75,6 +99,11 @@ bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
 
 
 // operaciones
+/**
+ *  Método para sumar dos racionales
+ *  @param r, objeto a comparar
+ *  @return objeto tipo racional con la suma
+ */
 Rational_t Rational_t::add(const Rational_t& r) {
   int numerador = GetNumerador() * r.GetDenominador() + r.GetNumerador() * GetDenominador();
   int denominador = GetDenominador() * r.GetDenominador();
@@ -82,7 +111,11 @@ Rational_t Rational_t::add(const Rational_t& r) {
 }
 
 
-
+/**
+ *  Método para restar dos racionales
+ *  @param r, objeto a comparar
+ *  @return objeto tipo racional con la resta
+ */
 Rational_t Rational_t::substract(const Rational_t& r) {
   int numerador = GetNumerador() * r.GetDenominador() - r.GetNumerador() * GetDenominador();
   int denominador = GetDenominador() * r.GetDenominador();
@@ -90,26 +123,38 @@ Rational_t Rational_t::substract(const Rational_t& r) {
 }
 
 
-
+/**
+ *  Método para multiplicar dos racionales
+ *  @param r, objeto a comparar
+ *  @return objeto tipo racional con el producto
+ */
 Rational_t Rational_t::multiply(const Rational_t& r) {
  return Rational_t(GetNumerador() * r.GetNumerador(), GetDenominador() * r.GetDenominador());
 }
 
 
-
+/**
+ *  Método para dividir dos racionales
+ *  @param r, objeto a comparar
+ *  @return objeto tipo racional con el cociente
+ */
 Rational_t Rational_t::divide(const Rational_t& r) {
   return Rational_t(GetNumerador() * r.GetDenominador(), GetDenominador() * r.GetNumerador());
 }
 
 
 
-// Método de entrada (escritura) 
+/**
+ * Método de entrada (escritura) 
+*/
 void Rational_t::Write(ostream& os) const {
   os << GetNumerador() << "/" << GetDenominador() << "=" << Value() << endl;
 }
 
 
-// Método de salida (lectura)
+/**
+ * Método de salida (lectura)
+*/
 void  Rational_t::Read(istream& is) {
   cout << "Numerador? ";
   is >> numerador_;

@@ -16,13 +16,11 @@
 #include <cassert>
 #include <cmath>
 
-// pauta de estilo [5]
 # define EPSILON 1e-6
 
 using namespace std;
 
 class Rational_t {
-  // pautas de estilos [44] y [73]: primero "public" y después "private"
 public:
   // constructor con parámetros
   Rational_t(const int = 0, const int = 1);
@@ -30,7 +28,6 @@ public:
   // destructor por defecto
   ~Rational_t() {}
   
-  // pauta de estilo [71]: indenominadortación a 2 espacios
   // getter del numeradorerador
   int GetNumerador() const;
 
@@ -47,14 +44,26 @@ public:
   double Value(void) const;
 
   // FASE II
+  // Método que comprueba si dos racionales son iguales con error de epsilon
   bool IsEqual(const Rational_t&, const double precision = EPSILON) const;
+
+  // Método que comprueba si un racional es mayor que otro (con error de epsilon)
   bool IsGreater(const Rational_t&, const double precision = EPSILON) const;
+
+  // Método que comprueba si un racional es menor que otro (con error de epsilon)
   bool IsLess(const Rational_t&, const double precision = EPSILON) const;
   
   // FASE III
+  // Método para la suma de dos racionales
   Rational_t add(const Rational_t&);
+
+  // Método para la resta de dos racionales
   Rational_t substract(const Rational_t&);
+
+  // Método para el producto de dos racionales
   Rational_t multiply(const Rational_t&);
+
+  // Método para la división de dos racionales
   Rational_t divide(const Rational_t&);
 
   // Método de escritura de la clase
