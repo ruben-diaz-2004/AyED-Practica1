@@ -15,9 +15,9 @@
 /**
  * Constructor con parámetros
  */ 
-Rational_t::Rational_t(const int n, const int d) {
-  assert(d != 0);
-  numerador_ = n, denominador_ = d;
+Rational_t::Rational_t(const int numerador, const int denominador) {
+  assert(denominador != 0);
+  numerador_ = numerador, denominador_ = denominador;
 }
 
 /**
@@ -38,17 +38,17 @@ int Rational_t::GetDenominador() const {
 /**
  * setter del numerador
 */
-void Rational_t::SetNumerador(const int n) {
-  numerador_ = n;
+void Rational_t::SetNumerador(const int numerador) {
+  numerador_ = numerador;
 }
 
 
 /**
  * setter del denominador
 */
-void Rational_t::SetDenominador(const int d) {
-  assert(d != 0);
-  denominador_ = d;
+void Rational_t::SetDenominador(const int denominador) {
+  assert(denominador != 0);
+  denominador_ = denominador;
 }
 
 
@@ -68,8 +68,8 @@ double Rational_t::Value() const {
  *  @param precision, se le pasa el valor de epsilon
  *  @return true si los racionales son iguales.
  */
-bool Rational_t::IsEqual(const Rational_t& r, const double precision) const { 
-  return (abs((Value() - r.Value())) < EPSILON);
+bool Rational_t::IsEqual(const Rational_t& racional, const double precision) const { 
+  return (abs((Value() - racional.Value())) < EPSILON);
 }
 
 
@@ -79,8 +79,8 @@ bool Rational_t::IsEqual(const Rational_t& r, const double precision) const {
  *  @param precision, se le pasa el valor de epsilon
  *  @return true si el primer racional es mayor que el segundo.
  */
-bool Rational_t::IsGreater(const Rational_t& r, const double precision) const {
-  return ((Value() - r.Value()) > EPSILON);
+bool Rational_t::IsGreater(const Rational_t& racional, const double precision) const {
+  return ((Value() - racional.Value()) > EPSILON);
 }
 
 
@@ -90,9 +90,9 @@ bool Rational_t::IsGreater(const Rational_t& r, const double precision) const {
  *  @param precision, se le pasa el valor de epsilon
  *  @return true si el primer racional es menor que el segundo.
  */
-bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
-  if ((r.Value() - Value()) > EPSILON) {
-    return ((Value() - r.Value()) < -EPSILON);
+bool Rational_t::IsLess(const Rational_t& racional, const double precision) const {
+  if ((racional.Value() - Value()) > EPSILON) {
+    return ((Value() - racional.Value()) < -EPSILON);
   }
   return false;
 }
@@ -104,9 +104,9 @@ bool Rational_t::IsLess(const Rational_t& r, const double precision) const {
  *  @param r, objeto a comparar
  *  @return objeto tipo racional con la suma
  */
-Rational_t Rational_t::add(const Rational_t& r) {
-  int numerador = GetNumerador() * r.GetDenominador() + r.GetNumerador() * GetDenominador();
-  int denominador = GetDenominador() * r.GetDenominador();
+Rational_t Rational_t::add(const Rational_t& racional) {
+  int numerador = GetNumerador() * racional.GetDenominador() + racional.GetNumerador() * GetDenominador();
+  int denominador = GetDenominador() * racional.GetDenominador();
   return Rational_t(numerador, denominador);
 }
 
@@ -116,9 +116,9 @@ Rational_t Rational_t::add(const Rational_t& r) {
  *  @param r, objeto a comparar
  *  @return objeto tipo racional con la resta
  */
-Rational_t Rational_t::substract(const Rational_t& r) {
-  int numerador = GetNumerador() * r.GetDenominador() - r.GetNumerador() * GetDenominador();
-  int denominador = GetDenominador() * r.GetDenominador();
+Rational_t Rational_t::substract(const Rational_t& racional) {
+  int numerador = GetNumerador() * racional.GetDenominador() - racional.GetNumerador() * GetDenominador();
+  int denominador = GetDenominador() * racional.GetDenominador();
   return Rational_t(numerador, denominador);
 }
 
@@ -128,8 +128,8 @@ Rational_t Rational_t::substract(const Rational_t& r) {
  *  @param r, objeto a comparar
  *  @return objeto tipo racional con el producto
  */
-Rational_t Rational_t::multiply(const Rational_t& r) {
- return Rational_t(GetNumerador() * r.GetNumerador(), GetDenominador() * r.GetDenominador());
+Rational_t Rational_t::multiply(const Rational_t& racional) {
+ return Rational_t(GetNumerador() * racional.GetNumerador(), GetDenominador() * racional.GetDenominador());
 }
 
 
@@ -138,8 +138,8 @@ Rational_t Rational_t::multiply(const Rational_t& r) {
  *  @param r, objeto a comparar
  *  @return objeto tipo racional con el cociente
  */
-Rational_t Rational_t::divide(const Rational_t& r) {
-  return Rational_t(GetNumerador() * r.GetDenominador(), GetDenominador() * r.GetNumerador());
+Rational_t Rational_t::divide(const Rational_t& racional) {
+  return Rational_t(GetNumerador() * racional.GetDenominador(), GetDenominador() * racional.GetNumerador());
 }
 
 
@@ -161,4 +161,29 @@ void  Rational_t::Read(istream& is) {
   cout << "Denominador? ";
   is >> denominador_;
   assert(denominador_ != 0);
+}
+
+/**
+ * Modificación que me piden en clase
+ * Hacer un racional, restando la unidad
+ * @param 
+ * @return objeto modificado
+ */
+void Rational_t::Minus1() {
+  int numerador{0};
+  numerador = GetNumerador() - GetDenominador();
+  cout << GetNumerador() << " - " << GetDenominador() << " / " << GetDenominador() << endl;
+  SetNumerador(numerador);
+}
+
+/**
+ * Se le pasa dos números a y b a la función
+ * Y devuelve un racional con los números como 
+ * numerador y denominador menos la unidad
+ */
+Rational_t Rational_t::Menos1(const int a, const int b) {
+  assert(b != 0);
+  int numerador = a - b;
+  int denominador = b;
+  return Rational_t(numerador, denominador);
 }

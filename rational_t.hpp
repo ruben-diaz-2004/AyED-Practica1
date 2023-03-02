@@ -71,6 +71,11 @@ public:
 
   // Método de lectura de la clase
   void Read(istream& = cin);
+
+  // Modificación de clase
+  void Minus1();
+
+  Rational_t Menos1(const int , const int );
   
 private:
   // pauta de estilo [11]: nombre de los atributos seguido de "_"

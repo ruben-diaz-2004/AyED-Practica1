@@ -20,6 +20,21 @@ using namespace std;
 
 int main()
 {
+  // Prueba de la modificación
+  Rational_t testing(24, 3);
+  cout << "a = " << testing.GetNumerador() << endl;
+  cout << "b = " << testing.GetDenominador() << endl;
+  cout << "Valor: " << testing.Value() << endl;
+  testing.Minus1();
+  cout << "Llamada a la función.\n";
+  cout << "Nuevo numerador: " << testing.GetNumerador() << endl;
+  cout << "Nuevo denominador: " << testing.GetDenominador() << endl;
+  cout << "Nuevo valor: " << testing.Value() << endl;
+
+  // Rational_t prueba2(4, 3);
+  // prueba2.Menos1(9, 3);
+  // cout << prueba2.Value() << endl;
+
   Rational_t a(1, 2), b(3), c;
 
   cout << "a.value()= " << a.Value() << endl;
